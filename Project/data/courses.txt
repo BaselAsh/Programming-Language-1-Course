@@ -1,1 +1,2 @@
 course_id|course_name|course_credit|course_property
+MT101|Math 1|3|Compulsory

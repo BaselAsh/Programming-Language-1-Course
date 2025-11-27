@@ -6,12 +6,10 @@
 #include <vector>
 
 std::vector<std::string> split(const std::string &s, char delimiter);
-void appendToFile(std::ofstream &file, const Student &s);
-Student parseLineToStudent(const std::string &line);
-Course parseLineToCourse(const std::string &line);
-void getStudentInput(Student &student);
+void appendStudentToFile(std::ofstream &file, const Student &s);
 int getInteger(const std::string prompt);
 int getTheOperation();
+std::string wordToLower(const std::string &word);
 std::string getID();
 
 #endif // !UTILS_H

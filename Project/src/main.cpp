@@ -1,3 +1,4 @@
+#include "course.hpp"
 #include "models.hpp"
 #include "student.hpp"
 #include "utils.hpp"
@@ -19,7 +20,7 @@ int main() {
         break;
     case 2: {
         Student new_student;
-        cout << "Enter the Student info." << endl;
+        cout << "Enter the Student info. " << endl;
         cout << "Enter ID: ";
         getline(cin, new_student.student_id);
         getStudentInput(new_student);
@@ -39,16 +40,23 @@ int main() {
         deleteStudent(id);
         break;
     }
-    // case 5:
-    // case 6:
+    // case 5: {
+    // }
+    case 6: {
+        Course course;
+        getCourseInput(course);
+        addCourse(course);
+        break;
+    }
     // case 7:
     // case 8:
     // case 9:
     // case 10:
     // case 11:
-    default:
+    default: {
         cout << "Invalid Input. :/";
         break;
+    }
     }
     return 0;
 }

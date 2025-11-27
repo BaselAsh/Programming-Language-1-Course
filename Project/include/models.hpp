@@ -2,6 +2,7 @@
 #define MODELS_HPP
 
 #include <string>
+
 struct Student {
     std::string student_id;
     std::string name;

@@ -31,7 +31,7 @@ void displayStudent(const string &id) {
                     "+=+=+"
                     "=+=+=+=+=+=+=+=+";
         } else {
-            cout << "Student Not Found. :/" << endl;
+            cout << "Student Not Found. :/ " << endl;
         }
     }
 }
@@ -53,7 +53,7 @@ void addStudent(const Student &student) {
                       "data/students.txt",
                       ios::app);
     if (students.is_open()) {
-        appendToFile(students, student);
+        appendStudentToFile(students, student);
         students.close();
         cout << "Student has been added successfully!!!" << endl;
     }
@@ -71,7 +71,7 @@ void modifyStudent(const string &id) {
         if (s.student_id == id) {
             found = true;
             getStudentInput(s);
-            appendToFile(temp, s);
+            appendStudentToFile(temp, s);
         } else {
             temp << line << "\n";
         }
@@ -122,4 +122,33 @@ void deleteStudent(const string &id) {
                "temp.txt");
         cout << "Student not found. :/" << endl;
     }
+}
+
+Student parseLineToStudent(const string &line) {
+    vector<string> parsed_line = split(line, '|');
+    Student s;
+    s.student_id = parsed_line[0];
+    s.name = parsed_line[1];
+    s.sex = parsed_line[2];
+    s.age = parsed_line[3];
+    s.institution = parsed_line[4];
+    s.major = parsed_line[5];
+    return s;
+}
+
+void getStudentInput(Student &student) {
+    cout << "Enter Name: ";
+    getline(cin, student.name);
+    cout << "Enter Sex: ";
+    getline(cin, student.sex);
+    cout << "Enter Age: ";
+    getline(cin, student.age);
+    cout << "Enter Institution: ";
+    getline(cin, student.institution);
+    cout << "Enter Major: ";
+    getline(cin, student.major);
+}
+void appendStudentToFile(ofstream &file, const Student &s) {
+    file << s.student_id << "|" << s.name << "|" << s.sex << "|" << s.age << "|"
+         << s.institution << "|" << s.major << "\n";
 }

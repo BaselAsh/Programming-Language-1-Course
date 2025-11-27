@@ -20,7 +20,7 @@ $(BUILD_DIR):
 	@mkdir -p $(BUILD_DIR)
 
 $(EXECUTABLE): $(OBJECTS)
-	$(CC) %(CFLAGS) $(OBJECTS) -o $@
+	$(CC) $(CFLAGS) $(OBJECTS) -o $@
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@

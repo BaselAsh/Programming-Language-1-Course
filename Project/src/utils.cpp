@@ -17,44 +17,17 @@ vector<string> split(const string &s, char delimiter) {
     return tokens;
 }
 
-void appendToFile(ofstream &file, const Student &s) {
-    file << s.student_id << "|" << s.name << "|" << s.sex << "|" << s.age << "|"
-         << s.institution << "|" << s.major << "\n";
-}
-
-void getStudentInput(Student &student) {
-    cout << "Enter Name: ";
-    getline(cin, student.name);
-    cout << "Enter Sex: ";
-    getline(cin, student.sex);
-    cout << "Enter Age: ";
-    getline(cin, student.age);
-    cout << "Enter Institution: ";
-    getline(cin, student.institution);
-    cout << "Enter Major: ";
-    getline(cin, student.major);
-}
-
-Student parseLineToStudent(const string &line) {
-    vector<string> parsed_line = split(line, '|');
-    Student s;
-    s.student_id = parsed_line[0];
-    s.name = parsed_line[1];
-    s.sex = parsed_line[2];
-    s.age = parsed_line[3];
-    s.institution = parsed_line[4];
-    s.major = parsed_line[5];
-    return s;
-}
-
-Course parseLineToCourse(const string &line) {
-    vector<string> parsed_line = split(line, '|');
-    Course c;
-    c.course_id = parsed_line[0];
-    c.course_name = parsed_line[1];
-    c.course_credit = stoi(parsed_line[2]);
-    c.course_property = parsed_line[3];
-    return c;
+string wordToLower(const string &word) {
+    vector<char> letters;
+    vector<char> lower_letters;
+    for (char letter : word) {
+        if (letter >= 65 && letter <= 90)
+            lower_letters.push_back(letter + 20);
+        else if (letter >= 97 && letter <= 122)
+            lower_letters.push_back(letter);
+    }
+    string lower_word(lower_letters.begin(), lower_letters.end());
+    return lower_word;
 }
 
 // Get a number without an error or string
@@ -72,7 +45,7 @@ int getInteger(const string prompt) {
             (value >= 1 && value <= 11)) {
             return value;
         }
-        cout << "Invalid input. Please enter a whole number only." << endl;
+        cout << "Invalid input. Please enter a whole number only. " << endl;
     }
 }
 

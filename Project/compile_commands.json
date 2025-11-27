@@ -1,0 +1,66 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-Wall",
+      "-Wextra",
+      "-std=c++17",
+      "-Iinclude",
+      "-c",
+      "-o",
+      "build/main.o",
+      "src/main.cpp"
+    ],
+    "directory": "/home/baselash/Programming-Language-1-Course/Project",
+    "file": "/home/baselash/Programming-Language-1-Course/Project/src/main.cpp",
+    "output": "/home/baselash/Programming-Language-1-Course/Project/build/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-Wall",
+      "-Wextra",
+      "-std=c++17",
+      "-Iinclude",
+      "-c",
+      "-o",
+      "build/student.o",
+      "src/student.cpp"
+    ],
+    "directory": "/home/baselash/Programming-Language-1-Course/Project",
+    "file": "/home/baselash/Programming-Language-1-Course/Project/src/student.cpp",
+    "output": "/home/baselash/Programming-Language-1-Course/Project/build/student.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-Wall",
+      "-Wextra",
+      "-std=c++17",
+      "-Iinclude",
+      "-c",
+      "-o",
+      "build/course.o",
+      "src/course.cpp"
+    ],
+    "directory": "/home/baselash/Programming-Language-1-Course/Project",
+    "file": "/home/baselash/Programming-Language-1-Course/Project/src/course.cpp",
+    "output": "/home/baselash/Programming-Language-1-Course/Project/build/course.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-Wall",
+      "-Wextra",
+      "-std=c++17",
+      "-Iinclude",
+      "-c",
+      "-o",
+      "build/utils.o",
+      "src/utils.cpp"
+    ],
+    "directory": "/home/baselash/Programming-Language-1-Course/Project",
+    "file": "/home/baselash/Programming-Language-1-Course/Project/src/utils.cpp",
+    "output": "/home/baselash/Programming-Language-1-Course/Project/build/utils.o"
+  }
+]
