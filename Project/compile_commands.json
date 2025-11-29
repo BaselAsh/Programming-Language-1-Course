@@ -62,5 +62,21 @@
     "directory": "/home/baselash/Programming-Language-1-Course/Project",
     "file": "/home/baselash/Programming-Language-1-Course/Project/src/utils.cpp",
     "output": "/home/baselash/Programming-Language-1-Course/Project/build/utils.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-Wall",
+      "-Wextra",
+      "-std=c++17",
+      "-Iinclude",
+      "-c",
+      "-o",
+      "build/info.o",
+      "src/info.cpp"
+    ],
+    "directory": "/home/baselash/Programming-Language-1-Course/Project",
+    "file": "/home/baselash/Programming-Language-1-Course/Project/src/info.cpp",
+    "output": "/home/baselash/Programming-Language-1-Course/Project/build/info.o"
   }
 ]

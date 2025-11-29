@@ -1,0 +1,2 @@
+Student ID|Course ID|Course Credit|Course Property|Score
+12|MT202|3|Compulsory|-1

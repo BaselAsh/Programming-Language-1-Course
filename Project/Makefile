@@ -7,7 +7,7 @@ INCLUDE_DIR = include
 
 INCLUDES =-I$(INCLUDE_DIR)
 
-SOURCES = main.cpp student.cpp course.cpp utils.cpp
+SOURCES = main.cpp student.cpp course.cpp utils.cpp info.cpp
 
 OBJECTS = $(addprefix $(BUILD_DIR)/, $(SOURCES:.cpp=.o))
 

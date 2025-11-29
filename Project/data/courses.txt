@@ -1,2 +1,6 @@
-course_id|course_name|course_credit|course_property
-MT101|Math 1|3|Compulsory
+Course ID|Course Name|Course Credit|Course Property
+MT105|Linear Algebra|2|Optional
+MT102|Math 2|4|Compulsory
+MT201|Programming Language 1|3|Compulsory
+MT202|Programming Language 2|3|Compulsory
+MT205|Mechanices|3|Compulsory

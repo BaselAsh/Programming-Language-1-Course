@@ -7,6 +7,24 @@
 #include <string>
 using namespace std;
 
+Course getCourse(const std::string &id) {
+    string line;
+    ifstream courses("/home/baselash/Programming-Language-1-Course/Project/"
+                     "data/courses.txt");
+
+    while (getline(courses, line)) {
+        Course course = parseLineToCourse(line);
+        if (course.course_id == id) {
+            return course;
+        } else {
+            continue;
+        }
+    }
+    Course non_course;
+    non_course.course_id = "000";
+    return non_course;
+}
+
 void addCourse(const Course &course) {
     string line;
     bool found = false;
@@ -29,21 +47,84 @@ void addCourse(const Course &course) {
     else
         cout << "Can't Add This Course. :/" << endl;
 }
-void modifyCourse() {}
-void deleteCourse() {}
+
+void modifyCourse(const string &id) {
+    ifstream courses("/home/baselash/Programming-Language-1-Course/Project/"
+                     "data/courses.txt");
+    ofstream temp(
+        "/home/baselash/Programming-Language-1-Course/Project/data/temp.txt");
+    bool found = false;
+    string line;
+    while (getline(courses, line)) {
+        Course c = parseLineToCourse(line);
+        if (c.course_id == id) {
+            found = true;
+            getCourseInput(c);
+            appendCourseToFile(temp, c);
+        } else {
+            temp << line << "\n";
+        }
+    }
+    courses.close();
+    temp.close();
+
+    if (found) {
+        remove("/home/baselash/Programming-Language-1-Course/Project/data/"
+               "courses.txt");
+        rename("/home/baselash/Programming-Language-1-Course/Project/data/"
+               "temp.txt",
+               "/home/baselash/Programming-Language-1-Course/Project/data/"
+               "courses.txt");
+    } else {
+        remove("/home/baselash/Programming-Language-1-Course/Project/data/"
+               "temp.txt");
+        cout << "Course not found. :/" << endl;
+    }
+}
+void deleteCourse(const string &id) {
+    ifstream courses("/home/baselash/Programming-Language-1-Course/Project/"
+                     "data/courses.txt");
+    ofstream temp(
+        "/home/baselash/Programming-Language-1-Course/Project/data/temp.txt");
+    bool found = false;
+    string line;
+    while (getline(courses, line)) {
+        Course course = parseLineToCourse(line);
+        if (course.course_id == id)
+            found = true;
+        else
+            temp << line << "\n";
+    }
+    courses.close();
+    temp.close();
+
+    if (found) {
+        remove("/home/baselash/Programming-Language-1-Course/Project/data/"
+               "courses.txt");
+        rename("/home/baselash/Programming-Language-1-Course/Project/data/"
+               "temp.txt",
+               "/home/baselash/Programming-Language-1-Course/Project/data/"
+               "courses.txt");
+        cout << "The Course Has Been Deleted Successfully. :)";
+    } else {
+        remove("/home/baselash/Programming-Language-1-Course/Project/data/"
+               "temp.txt");
+        cout << "Course not found. :/" << endl;
+    }
+}
 
 Course parseLineToCourse(const string &line) {
     vector<string> parsed_line = split(line, '|');
-    Course c;
-    c.course_id = parsed_line[0];
-    c.course_name = parsed_line[1];
+    Course course;
+    course.course_id = parsed_line[0];
+    course.course_name = parsed_line[1];
     try {
-        c.course_credit = stoi(parsed_line[2]);
+        course.course_credit = stoi(parsed_line[2]);
     } catch (const invalid_argument &e) {
     } catch (const out_of_range &e) {
     }
-    c.course_property = parsed_line[3];
-    return c;
+    course.course_property = parsed_line[3];
+    return course;
 }
 
 void setCourseCompulsory(string &course_property) {

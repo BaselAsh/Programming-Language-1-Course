@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void displayStudent(const string &id) {
+Student getStudent(const string &id) {
     string line;
     ifstream students("/home/baselash/Programming-Language-1-Course/Project/"
                       "data/students.txt");
@@ -16,24 +16,28 @@ void displayStudent(const string &id) {
     while (getline(students, line)) {
         Student student = parseLineToStudent(line);
         if (student.student_id == id) {
-            cout << "=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+="
-                    "+=+=+=+=+="
-                    "+=+=+"
-                    "=+=+=+=+=+=+=+=+";
-            cout << "ID: " << student.student_id << endl;
-            cout << "Name: " << student.name << endl;
-            cout << "Sex: " << student.sex << endl;
-            cout << "Age: " << student.age << endl;
-            cout << "Institution: " << student.institution << endl;
-            cout << "Major: " << student.major << endl;
-            cout << "=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+="
-                    "+=+=+=+=+="
-                    "+=+=+"
-                    "=+=+=+=+=+=+=+=+";
+            // cout << "=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+="
+            //         "+=+=+=+=+="
+            //         "+=+=+"
+            //         "=+=+=+=+=+=+=+=+";
+            // cout << "ID: " << student.student_id << endl;
+            // cout << "Name: " << student.name << endl;
+            // cout << "Sex: " << student.sex << endl;
+            // cout << "Age: " << student.age << endl;
+            // cout << "Institution: " << student.institution << endl;
+            // cout << "Major: " << student.major << endl;
+            // cout << "=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+="
+            //         "+=+=+=+=+="
+            //         "+=+=+"
+            //         "=+=+=+=+=+=+=+=+";
+            return student;
         } else {
-            cout << "Student Not Found. :/ " << endl;
+            continue;
         }
     }
+    Student non_student;
+    non_student.student_id = "000";
+    return non_student;
 }
 
 void addStudent(const Student &student) {
@@ -117,6 +121,7 @@ void deleteStudent(const string &id) {
                "temp.txt",
                "/home/baselash/Programming-Language-1-Course/Project/data/"
                "students.txt");
+        cout << "The Student Has Been Deleted Successfully. :)";
     } else {
         remove("/home/baselash/Programming-Language-1-Course/Project/data/"
                "temp.txt");

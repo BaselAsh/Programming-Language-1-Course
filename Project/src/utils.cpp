@@ -22,7 +22,7 @@ string wordToLower(const string &word) {
     vector<char> lower_letters;
     for (char letter : word) {
         if (letter >= 65 && letter <= 90)
-            lower_letters.push_back(letter + 20);
+            lower_letters.push_back(letter + 32);
         else if (letter >= 97 && letter <= 122)
             lower_letters.push_back(letter);
     }
@@ -41,10 +41,8 @@ int getInteger(const string prompt) {
         // (ss >> value) Saves the user input number in the value variable.
         // (ss >> ws).eof() Checks if there is anything left in the line (string
         // or whitespace)
-        if (((ss >> value) && (ss >> ws).eof()) &&
-            (value >= 1 && value <= 11)) {
+        if ((ss >> value) && (ss >> ws).eof())
             return value;
-        }
         cout << "Invalid input. Please enter a whole number only. " << endl;
     }
 }
@@ -64,14 +62,15 @@ int getTheOperation() {
     cout << "8) Delete Course." << endl;
     cout << "9) Enroll a Student." << endl;
     cout << "10) Show Graduates." << endl;
-    cout << "11) Show Failed Students." << endl;
+    cout << "11) Show Failed Students In The Exam Of A Course." << endl;
+    cout << "12) Show Selected And Obtained Credits Of Student." << endl;
     user_input = getInteger("What Would You Like To Do?: ");
     return user_input;
 }
 
-string getID() {
+string getID(const string &prompt) {
     string targetID;
-    cout << "Enter ID: ";
+    cout << prompt;
     cin >> targetID;
     cin.ignore();
     return targetID;

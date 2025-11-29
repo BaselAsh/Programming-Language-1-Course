@@ -20,9 +20,9 @@ struct Course {
 };
 
 struct Info {
-    std::string student_id;
-    std::string course_id;
-    double score;
+    Student student;
+    Course course;
+    int score = -1;
 };
 
 #endif
