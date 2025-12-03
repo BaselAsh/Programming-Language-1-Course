@@ -64,6 +64,37 @@ void displayGraduates() {
     infos.close();
 }
 
+void getStudentCredit(const string &id) {
+    ifstream infos(
+        "/home/baselash/Programming-Language-1-Course/Project/data/infos.txt");
+    string infos_header;
+    string infos_line;
+    Info info;
+    int complusary_score = 0;
+    int optional_score = 0;
+    bool found = false;
+    getline(infos, infos_header);
+
+    while (getline(infos, infos_line)) {
+        info = parseLineToInfo(infos_line);
+        if ((info.student.student_id == id) && (info.score >= 50)) {
+            if (info.course.course_property == "Compulsory") {
+                complusary_score += info.course.course_credit;
+            } else {
+                optional_score += info.course.course_credit;
+            }
+            found = true;
+        }
+    }
+    infos.close();
+    if (found) {
+        cout << "Compulsory Credit: " << complusary_score << endl;
+        cout << "Optional Credit: " << optional_score << endl;
+    } else {
+        cout << "This Student Is Not Enrolled In Any Course." << endl;
+    }
+}
+
 Info parseLineToInfo(const string &line) {
     vector<string> parsed_line = split(line, '|');
     Info info;
@@ -119,7 +150,7 @@ void enterStudentScore(const string &course_id, const string &student_id,
     }
 }
 
-bool isFailed(const string &student_id, const string &course_id) {
+void isFailed(const string &student_id, const string &course_id) {
     ifstream infos(
         "/home/baselash/Programming-Language-1-Course/Project/data/infos.txt");
     string infos_line;
@@ -129,13 +160,15 @@ bool isFailed(const string &student_id, const string &course_id) {
         if (student_id == file_info.student.student_id &&
             course_id == file_info.course.course_id) {
             if (file_info.score >= 60)
-                return false;
+                cout << "The Student Has Passed!!! :)" << endl;
+            else if (file_info.score == -1) {
+                cout << "The Exam Result Hasn't Come Out Yet." << endl;
+            }
+
             else
-                return true;
+                cout << "The Student Has Failed :(" << endl;
         } else {
             continue;
         }
     }
-
-    return true;
 }

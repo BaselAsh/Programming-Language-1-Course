@@ -28,6 +28,21 @@ string wordToLower(const string &word) {
     return lower_word;
 }
 
+string wordToUpper(const string &word) {
+    vector<char> letters;
+    vector<char> upper_letters;
+    for (char letter : word) {
+        if (letter >= 97 && letter <= 122)
+            upper_letters.push_back(letter - 32);
+        else if (letter >= 65 && letter <= 90)
+            upper_letters.push_back(letter);
+        else
+            upper_letters.push_back(letter);
+    }
+    string lower_word(upper_letters.begin(), upper_letters.end());
+    return lower_word;
+}
+
 // Get a number without an error or string
 int getInteger(const string prompt) {
     int value;
@@ -45,7 +60,7 @@ int getInteger(const string prompt) {
 int getTheOperation() {
     int user_input;
     cout << "Welcome!" << endl;
-    cout << "What would you like to do." << endl;
+    cout << "What Would You Like To Do." << endl;
     cout << "Type The Number Of The Operation That You Want To Do." << endl;
     cout << "1) Display Student Information." << endl;
     cout << "2) Add Student." << endl;

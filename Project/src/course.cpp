@@ -20,6 +20,7 @@ Course getCourse(const std::string &id) {
             continue;
         }
     }
+    courses.close();
     Course non_course;
     non_course.course_id = "000";
     return non_course;
@@ -46,6 +47,8 @@ void addCourse(const Course &course) {
         appendCourseToFile(courses, course);
     else
         cout << "Can't Add This Course. :/" << endl;
+    check.close();
+    courses.close();
 }
 
 void modifyCourse(const string &id) {

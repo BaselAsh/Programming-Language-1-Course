@@ -58,7 +58,7 @@ int main() {
     }
     case 5: {
         // Display Course Information
-        string targetID = getID("Enter Course ID: ");
+        string targetID = wordToUpper(getID("Enter Course ID: "));
         Course course = getCourse(targetID);
         if (course.course_id != "000") {
 
@@ -88,21 +88,21 @@ int main() {
     }
     case 7: {
         // Modify Course
-        string targetID = getID("Enter Course ID: ");
+        string targetID = wordToUpper(getID("Enter Course ID: "));
         modifyCourse(targetID);
         break;
     }
 
     case 8: {
         // Delete Course
-        string targetID = getID("Enter Course ID: ");
+        string targetID = wordToUpper(getID("Enter Course ID: "));
         deleteCourse(targetID);
         break;
     }
     case 9: {
         // Enroll Student
         string targetStudentID = getID("Enter Student ID: ");
-        string targetCourseID = getID("Enter Course ID: ");
+        string targetCourseID = wordToUpper(getID("Enter Course ID: "));
         Student student = getStudent(targetStudentID);
         Course course = getCourse(targetCourseID);
         if (student.student_id != "000") {
@@ -117,10 +117,8 @@ int main() {
     case 10: {
         // Enter A Score For Student.
         string course_id, student_id;
-        cout << "Enter The Student ID: ";
-        getline(cin, student_id);
-        cout << "Enter The Course ID: ";
-        getline(cin, course_id);
+        student_id = getID("Enter The Student ID: ");
+        course_id = wordToUpper(getID("Enter The Course ID: "));
         int score = getInteger("Enter The Score: ");
         enterStudentScore(course_id, student_id, score);
         break;
@@ -130,8 +128,21 @@ int main() {
         displayGraduates();
         break;
     }
-        // case 12:
-        // case 13:
+    case 12: {
+        // Show Failed Student.
+        string student_id, course_id;
+        student_id = wordToUpper(getID("Enter The Student ID: "));
+        course_id = wordToUpper(getID("Enter The Course ID: "));
+        isFailed(student_id, course_id);
+
+        break;
+    }
+    case 13: {
+        string student_id;
+        student_id = getID("Enter The Student ID: ");
+        getStudentCredit(student_id);
+        break;
+    }
 
     default: {
         cout << "Invalid Input. :/";

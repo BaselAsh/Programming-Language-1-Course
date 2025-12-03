@@ -23,6 +23,7 @@ Student getStudent(const string &id) {
     }
     Student non_student;
     non_student.student_id = "000";
+    students.close();
     return non_student;
 }
 
@@ -34,7 +35,7 @@ void addStudent(const Student &student) {
     while (getline(check, line)) {
         Student file_student = parseLineToStudent(line);
         if (file_student.student_id == student.student_id) {
-            cout << "Can't add this student. This ID has been taken.";
+            cout << "Can't add this student. This ID has been taken." << endl;
             return;
         }
     }
@@ -47,6 +48,8 @@ void addStudent(const Student &student) {
         students.close();
         cout << "Student has been added successfully!!!" << endl;
     }
+    check.close();
+    students.close();
 }
 
 void modifyStudent(const string &id) {

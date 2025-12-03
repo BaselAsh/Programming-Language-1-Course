@@ -10,6 +10,7 @@ void appendStudentToFile(std::ofstream &file, const Student &s);
 int getInteger(const std::string prompt);
 int getTheOperation();
 std::string wordToLower(const std::string &word);
+std::string wordToUpper(const std::string &word);
 std::string getID(const std::string &prompt);
 
 #endif // !UTILS_H
