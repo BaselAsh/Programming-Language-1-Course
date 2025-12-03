@@ -15,7 +15,7 @@ void registerStudentToCourse(const Student &student, const Course &course) {
     info.student = student;
     info.course = course;
     ofstream infos(
-        "/home/baselash/Programming-Language-1-Course/Project/data/info.txt",
+        "/home/baselash/Programming-Language-1-Course/Project/data/infos.txt",
         ios::app);
     appendInfoToFile(infos, info);
     cout << "The Student Has Been Enrolled Successfully. :)" << endl;
@@ -38,21 +38,20 @@ void displayGraduates() {
     getline(infos, infos_header);
 
     while (getline(students, students_line)) {
-        cout << "hi" << endl;
         student = parseLineToStudent(students_line);
         while (getline(infos, infos_line)) {
-            cout << "welcome" << endl;
             info = parseLineToInfo(infos_line);
             if ((info.student.student_id == student.student_id) &&
                 (info.score >= 50)) {
-                if (info.course.course_property == "Complusary")
-                    complusary_score += info.score;
-                else
-                    optional_score += info.score;
-            } else
-                continue;
+                if (info.course.course_property == "Compulsory") {
+                    complusary_score += info.course.course_credit;
+                } else {
+                    optional_score += info.course.course_credit;
+                }
+            }
         }
-        if (complusary_score >= 24 && complusary_score + optional_score >= 36) {
+        if (complusary_score >= 24 &&
+            (complusary_score + optional_score) >= 36) {
             cout << student.student_id << ": " << student.name
                  << " Has Graduated Successfully !!! :)" << endl;
         }
@@ -86,7 +85,7 @@ void appendInfoToFile(ofstream &file, const Info &info) {
 void enterStudentScore(const string &course_id, const string &student_id,
                        const int &score) {
     ifstream infos("/home/baselash/Programming-Language-1-Course/Project/"
-                   "data/info.txt");
+                   "data/infos.txt");
     ofstream temp(
         "/home/baselash/Programming-Language-1-Course/Project/data/temp.txt");
     bool found = false;
@@ -107,11 +106,11 @@ void enterStudentScore(const string &course_id, const string &student_id,
 
     if (found) {
         remove("/home/baselash/Programming-Language-1-Course/Project/data/"
-               "info.txt");
+               "infos.txt");
         rename("/home/baselash/Programming-Language-1-Course/Project/data/"
                "temp.txt",
                "/home/baselash/Programming-Language-1-Course/Project/data/"
-               "info.txt");
+               "infos.txt");
     } else {
         remove("/home/baselash/Programming-Language-1-Course/Project/data/"
                "temp.txt");
@@ -122,7 +121,7 @@ void enterStudentScore(const string &course_id, const string &student_id,
 
 bool isFailed(const string &student_id, const string &course_id) {
     ifstream infos(
-        "/home/baselash/Programming-Language-1-Course/Project/data/info.txt");
+        "/home/baselash/Programming-Language-1-Course/Project/data/infos.txt");
     string infos_line;
     Info file_info;
     while (getline(infos, infos_line)) {
