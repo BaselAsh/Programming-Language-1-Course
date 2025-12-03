@@ -1,13 +1,11 @@
 #include "utils.hpp"
-#include "models.hpp"
-#include <fstream>
 #include <iostream>
 #include <sstream>
 #include <string>
 
 using namespace std;
 
-vector<string> split(const string &s, char delimiter) {
+vector<string> split(const string &s, const char &delimiter) {
     vector<string> tokens;
     string token;
     istringstream tokenStream(s);
@@ -38,9 +36,6 @@ int getInteger(const string prompt) {
         cout << prompt;
         getline(cin, input_line);
         stringstream ss(input_line);
-        // (ss >> value) Saves the user input number in the value variable.
-        // (ss >> ws).eof() Checks if there is anything left in the line (string
-        // or whitespace)
         if ((ss >> value) && (ss >> ws).eof())
             return value;
         cout << "Invalid input. Please enter a whole number only. " << endl;
@@ -61,9 +56,10 @@ int getTheOperation() {
     cout << "7) Modify Course." << endl;
     cout << "8) Delete Course." << endl;
     cout << "9) Enroll a Student." << endl;
-    cout << "10) Show Graduates." << endl;
-    cout << "11) Show Failed Students In The Exam Of A Course." << endl;
-    cout << "12) Show Selected And Obtained Credits Of Student." << endl;
+    cout << "10) Enter A Score For Student." << endl;
+    cout << "11) Show Graduates." << endl;
+    cout << "12) Show Failed Students In The Exam Of A Course." << endl;
+    cout << "13) Show Selected And Obtained Credits Of Student." << endl;
     user_input = getInteger("What Would You Like To Do?: ");
     return user_input;
 }

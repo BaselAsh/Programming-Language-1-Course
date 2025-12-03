@@ -1,0 +1,7 @@
+#!IMPORTANT: fix the 10th operation.
+Graduates
+    1) Iterate on the students in the students.txt file
+    2) Iterate on each student (by ID) in the info file
+    3) if the student's credit is 36 or over
+    4) if the complusary courses credit 24 or over then he is graduated
+

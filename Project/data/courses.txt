@@ -4,3 +4,8 @@ MT102|Math 2|4|Compulsory
 MT201|Programming Language 1|3|Compulsory
 MT202|Programming Language 2|3|Compulsory
 MT205|Mechanices|3|Compulsory
+MT203|Math 3|5|Compulsory
+MT204|Programming With Python|10|Compulsory
+MT103|Introduction To Programming|3|Compulsory
+MT301|Cyber Security|20|Optional
+MT401|Computer Science|20|Compulsory

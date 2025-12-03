@@ -2,3 +2,4 @@ ID|Name|Sex|Age|Institution|Major
 12|Basel|Male|19|Math|CS
 36|John Doe|Male|40|Engineering|Electronics
 50|Mahmoud Adel|Male|21|Arts|GIS
+123|Mohamed Adel|Male|20|Math|CS

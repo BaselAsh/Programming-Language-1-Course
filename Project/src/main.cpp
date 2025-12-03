@@ -114,12 +114,25 @@ int main() {
             cout << "This Student ID Doesn't Exist. :/";
         break;
     }
-    // case 10: {
-    //     // Show Graduates
-    //     break;
-    // }
-    // case 11:
-    // case 12:
+    case 10: {
+        // Enter A Score For Student.
+        string course_id, student_id;
+        cout << "Enter The Student ID: ";
+        getline(cin, student_id);
+        cout << "Enter The Course ID: ";
+        getline(cin, course_id);
+        int score = getInteger("Enter The Score: ");
+        enterStudentScore(course_id, student_id, score);
+        break;
+    }
+    case 11: {
+        // Show Graduates.
+        displayGraduates();
+        break;
+    }
+        // case 12:
+        // case 13:
+
     default: {
         cout << "Invalid Input. :/";
         break;
