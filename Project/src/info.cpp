@@ -155,20 +155,25 @@ void isFailed(const string &student_id, const string &course_id) {
         "/home/baselash/Programming-Language-1-Course/Project/data/infos.txt");
     string infos_line;
     Info file_info;
+    bool found = false;
     while (getline(infos, infos_line)) {
         file_info = parseLineToInfo(infos_line);
         if (student_id == file_info.student.student_id &&
             course_id == file_info.course.course_id) {
-            if (file_info.score >= 60)
+            if (file_info.score >= 60) {
                 cout << "The Student Has Passed!!! :)" << endl;
-            else if (file_info.score == -1) {
+                found = true;
+            } else if (file_info.score == -1) {
                 cout << "The Exam Result Hasn't Come Out Yet." << endl;
-            }
-
-            else
+                found = true;
+            } else {
                 cout << "The Student Has Failed :(" << endl;
+            }
         } else {
             continue;
         }
+    }
+    if (!found) {
+        cout << "This Student Is Not Enrolled In This Course." << endl;
     }
 }

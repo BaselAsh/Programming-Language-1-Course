@@ -110,7 +110,7 @@ void deleteStudent(const string &id) {
                "temp.txt",
                "/home/baselash/Programming-Language-1-Course/Project/data/"
                "students.txt");
-        cout << "The Student Has Been Deleted Successfully. :)";
+        cout << "The Student Has Been Deleted Successfully. :)" << endl;
     } else {
         remove("/home/baselash/Programming-Language-1-Course/Project/data/"
                "temp.txt");
